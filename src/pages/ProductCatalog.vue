@@ -27,7 +27,7 @@
       </div>
 
       <form @submit.prevent="handleAddProduct">
-        <input v-model="form.name" class="form-control mb-2" placeholder="Product Name *" required />
+        <input v-model="form.name" type="text" class="form-control mb-2" placeholder="Product Name *" required />
         <textarea v-model="form.description" class="form-control mb-2" placeholder="Description *" required></textarea>
         <input v-model="form.price" type="number" class="form-control mb-2" min="1" placeholder="Price *" required />
         <input v-model="form.image" type="url" class="form-control mb-3" placeholder="Image URL (Optional)" />
