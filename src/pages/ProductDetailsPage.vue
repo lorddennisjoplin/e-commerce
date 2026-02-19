@@ -247,7 +247,7 @@ watch(
   () => route.params.id,
   async (newId) => {
 
-    // ✅ Completely dispose modal instance
+    // Completely dispose modal instance
     if (modalInstance.value) {
       modalInstance.value.hide()
       modalInstance.value.dispose()
