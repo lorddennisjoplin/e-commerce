@@ -15,22 +15,22 @@
     <div v-if="showForm" class="card p-3 my-3 text-start">
       <h2 class="mb-3">Add Product</h2>
 
+      <!-- Success / Error Alert -->
+      <div
+        v-if="message"
+        :class="[
+          'alert mt-3 py-2',
+          messageType === 'success' ? 'alert-success' : 'alert-danger'
+        ]"
+      >
+        {{ message }}
+      </div>
+
       <form @submit.prevent="handleAddProduct">
         <input v-model="form.name" class="form-control mb-2" placeholder="Product Name *" required />
         <textarea v-model="form.description" class="form-control mb-2" placeholder="Description *" required></textarea>
         <input v-model="form.price" type="number" class="form-control mb-2" placeholder="Price *" required />
         <input v-model="form.image" type="url" class="form-control mb-3" placeholder="Image URL (Optional)" />
-
-        <!-- Success / Error Alert -->
-        <div
-          v-if="message"
-          :class="[
-            'alert mt-3 py-2',
-            messageType === 'success' ? 'alert-success' : 'alert-danger'
-          ]"
-        >
-          {{ message }}
-        </div>
 
         <button type="submit" class="btn btn-sm btn-primary me-2" :disabled="adding">
           <span v-if="adding">
