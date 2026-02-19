@@ -13,9 +13,9 @@
       <div v-if="auth.isAdmin" class="card p-4 mt-3">
         <h1 class="mb-3">Edit Product</h1>
         <form @submit.prevent="handleEditProduct">
-          <input v-model="form.name" class="form-control mb-2" placeholder="Product Name" required />
-          <textarea v-model="form.description" class="form-control mb-2" placeholder="Description" required></textarea>
-          <input v-model="form.price" type="number" class="form-control mb-2" min="1" placeholder="Price" required />
+          <input v-model="form.name" class="form-control mb-2" placeholder="Product Name *" required />
+          <textarea v-model="form.description" class="form-control mb-2" placeholder="Description *" required></textarea>
+          <input v-model="form.price" type="number" class="form-control mb-2" min="1" placeholder="Price *" required />
           <input v-model="form.image" type="text" class="form-control mb-2" placeholder="Image URL (Optional)" />
           <div class="form-check mb-3">
             <input type="checkbox" v-model="form.isActive" class="form-check-input" id="isActiveCheck" />
