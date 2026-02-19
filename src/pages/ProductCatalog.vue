@@ -19,7 +19,7 @@
       <div
         v-if="message"
         :class="[
-          'alert mt-3 py-2',
+          'alert py-2',
           messageType === 'success' ? 'alert-success' : 'alert-danger'
         ]"
       >
