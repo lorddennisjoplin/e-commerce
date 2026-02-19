@@ -171,7 +171,7 @@ const adding = ref(false)
 const form = reactive({
   name: '',
   description: '',
-  price: 0,
+  price: 1,
   isActive: true,
   image: ''
 })
