@@ -15,7 +15,7 @@
         <form @submit.prevent="handleEditProduct">
           <input v-model="form.name" class="form-control mb-2" placeholder="Product Name" />
           <textarea v-model="form.description" class="form-control mb-2" placeholder="Description"></textarea>
-          <input v-model="form.price" type="number" class="form-control mb-2" placeholder="Price" />
+          <input v-model="form.price" type="number" class="form-control mb-2" min="1" placeholder="Price" />
           <input v-model="form.image" type="text" class="form-control mb-2" placeholder="Image URL (Optional)" />
           <div class="form-check mb-3">
             <input type="checkbox" v-model="form.isActive" class="form-check-input" id="isActiveCheck" />
@@ -201,7 +201,7 @@ const editing = ref(false)
 const form = reactive({
   name: '',
   description: '',
-  price: '',
+  price: 1,
   isActive: true,
   image: ''
 })
