@@ -88,11 +88,11 @@
         </button>
 
         <button type="button" class="btn btn-sm btn-danger me-2"
-		        @click="deleteUser"
-		        :disabled="deleting || saving || form._id === auth.user.id">
-    		  <span v-if="deleting" class="spinner-border spinner-border-sm me-1"></span>
-    		  Delete
-    		</button>
+            @click="deleteUser"
+            :disabled="deleting || saving || form._id === auth.user.id">
+          <span v-if="deleting" class="spinner-border spinner-border-sm me-1"></span>
+          Delete
+        </button>
 
       </form>
     </div>
@@ -153,8 +153,8 @@ const heading = computed(() => {
 const fetchUser = async () => {
   loading.value = true
   try {
-  	// Non-admin cannot edit other users
-	  if (!auth.isAdmin) {
+    // Non-admin cannot edit other users
+    if (!auth.isAdmin) {
       if (userId !== auth.user.id) {
         message.value = "Access denied. You can only edit your own profile."
         messageType.value = 'error'
@@ -246,11 +246,19 @@ const handleSubmit = async () => {
 
     setTimeout(() => (message.value = ''), 3000)
   } catch (err) {
-    console.error(err)
-    message.value = 'Failed to update user.'
-    messageType.value = 'error'
-    setTimeout(() => (message.value = ''), 3000)
-  } finally {
+    console.error("updateUserDetails error:", err)
+
+  // Show whatever the backend actually sent
+  if (err.response) {
+    console.log("Backend response:", err.response)
+    message.value = err.response.data?.message || JSON.stringify(err.response.data) || 'Failed to update user.'
+  } else {
+    message.value = err.message || 'Failed to update user.'
+  }
+
+  messageType.value = 'error'
+  setTimeout(() => (message.value = ''), 3000)
+} finally {
     saving.value = false
   }
 }
